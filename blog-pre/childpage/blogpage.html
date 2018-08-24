@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .blog_left_banner{
+            width: 100%;
+            height: 380px;
+            margin: 10px 0;
+        }
+        .blog_left_banner>div{
+            width: 842px;
+            height: 380px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .blog_left_banner>div>ul{
+            width: 2526px;
+            height: 380px;
+        }
+        .blog_left_banner>div>ul>li{
+            float: left;
+            width: 842px;
+            height: 380px;
+            margin: 0;
+        }
+        .blog_left_banner>div>ul>li>img{
+            width:842px ;
+            height: 380px;
+        }
+        .blog_left_sug>p{
+            width: 842px;
+            height: 40px;
+            border-bottom: 2px solid #484746;
+            margin: 0 10px;
+        }
+        .blog_left_sug>p>span{
+            display: inline-block;
+            width: 150px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px #808080;
+        }
+        .blog_list{
+            width: 100%;
+            height:  auto;
+            position: relative;
+        }
+        .blog_list>ul>li{
+            width: 97.5%;
+            height: 250px;
+            margin: 30px 10px;
+        }
+        .blog_list_content{
+            display: flex;
+            flex-direction: row;
+        }
+        .blogname{
+            display: block;
+            font-size: 18px;
+            margin-left: 40px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .left{
+            flex: 2;
+            text-align: center;
+        }
+        .right{
+            flex: 6;
+        }
+        .left>img{
+            width: 175px;
+            height: 170px;
+            margin: 0 auto;
+        }
+        .right>p{
+            width: 600px;
+            height: 160px;
+            margin: 10px 10px 10px 0;
+            font-size: 14px;
+            color: #484746;
+        }
+        .author{
+            font-size: small;
+            color: #484746;
+            height: 32px;
+            line-height: 32px;
+            background-color: #f6f6f6;
+        }
+        .author>span{
+            margin-left: 30px;
+        }
+        .allblog{
+            font-size: 12px;
+            color: #484746;
+            position: absolute;
+            right: 35px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="blog_left_banner">
+    <div>
+        <ul>
+            <li><img src="../image/banner.jpg" alt=""/></li>
+            <li><img src="../image/banner1.jpg" alt=""/></li>
+            <li><img src="../image/banner.jpg" alt=""/></li>
+        </ul>
+    </div>
+</div>
+<div class="blog_left_sug">
+    <p><span><span style="color: #39b3d4;"> 推 荐</span> 博 客 </span></p>
+    <div class="blog_list">
+        <ul>
+            <li>
+                <span class="blogname">博客题目</span>
+                <span class="allblog">阅读全文 <i class="iconfont">&#xf02af;</i></span>
+                <div class="blog_list_content">
+                    <div class="left"><img src="../image/blog_img.jpg" alt=""></div>
+                    <div class="right">
+                        <p>看到昔日好友发了一篇日志《咎由自取》他说他是一个悲观者，
+                            感觉社会抛弃了他，脾气、性格在6年的时间里变化很大，很
+                            难适应这个社会。人生其实就是不断犯错的过程，在这个过程
+                            中不断的犯错，不断的吸取教训，不断的成长。也许日子里的
+                            惊涛骇浪，不过是人生中的水花摇晃，别用显微镜放大你的悲伤。</p>
+                    </div>
+                </div>
+                <div class="author">
+                    <span>作者：某某</span>
+                    <span class="time">日期：2018-6-7</span>
+                </div>
+            </li>
+            <li>
+                <span class="blogname">博客题目</span>
+                <span class="allblog">阅读全文 <i class="iconfont">&#xf02af;</i></span>
+                <div class="blog_list_content">
+                    <div class="left"><img src="../image/blog_img.jpg" alt=""></div>
+                    <div class="right">
+                        <p>看到昔日好友发了一篇日志《咎由自取》他说他是一个悲观者，
+                            感觉社会抛弃了他，脾气、性格在6年的时间里变化很大，很
+                            难适应这个社会。人生其实就是不断犯错的过程，在这个过程
+                            中不断的犯错，不断的吸取教训，不断的成长。也许日子里的
+                            惊涛骇浪，不过是人生中的水花摇晃，别用显微镜放大你的悲伤。</p>
+                    </div>
+                </div>
+                <div class="author">
+                    <span>作者：某某</span>
+                    <span class="time">日期：2018-6-7</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="../js/jquery-3.0.0.js"></script>
+<script>
+    $(function(){
+        var count=0;
+        setInterval(function(){
+            count++;
+            $('.blog_left_banner').find("ul").animate({
+                marginLeft:-(count*842)+"px"
+            },1000,"linear",function(){
+                if(count>=2){
+                    count=0;
+                    $('.blog_left_banner').find("ul").css("marginLeft",0);
+                }
+            })
+        },2500);
+
+    })
+</script>
+</body>
+</html>

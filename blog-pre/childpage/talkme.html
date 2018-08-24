@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对我说</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <style>
+        li{
+            list-style: none;
+        }
+        .heander{
+            font-size: 12px;
+            color:  #484746;
+            border-bottom: 1px solid silver;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .text{
+            width: 810px;
+            margin: 0 10px;
+            resize: none;
+            height: 100px;
+            padding: 5px;
+            outline: none;
+            margin-top: 10px;
+        }
+        .okclick{
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            background-color: #c90a16;
+            color: white;
+            line-height: 30px;
+            border-radius: 5px;
+            position: relative;
+            right: -750px;
+        }
+        #showtext{
+            width: 820px;
+            margin: 10px;
+            height: auto;
+            /*border: 1px solid red;*/
+        }
+        .divclass{
+            width: 820px;
+            height: 80px;
+            border-bottom: 1px solid silver;
+            margin-top: 20px;
+        }
+        .divclass>span{
+            font-size: small;
+            color: grey;
+            margin: 10px 20px;
+        }
+        .divclass>p{
+            font-size: smaller;
+            margin: 5px 0 10px 20px;
+            color: #212121;
+        }
+    </style>
+</head>
+<body>
+<div id="myself">
+    <div class="heander">
+        <i class="iconfont">&#xf014a;</i>
+        <span>您现在所在的位置是：首页>想对我说</span>
+    </div>
+</div>
+<div>
+   <textarea name="" class="text" id="text" placeholder="你想对我说......"></textarea>
+   <div class="okclick">确定</div>
+</div>
+<div id="showtext">
+
+</div>
+<script src="../js/jquery-3.0.0.js"></script>
+<script>
+    $(function(){
+        var vals=[];
+        console.log(vals);
+        $(".okclick").click(function(){
+            var date=new Date().toLocaleDateString();
+            var time=new Date().toLocaleTimeString();
+            var value=$("#text").val();
+            vals.push(date);
+            vals.push(time);
+            vals.push(value);
+            //console.log(vals);
+            var div=$("<div></div>");
+            var dataspan=$("<span></span>");
+            var timespan=$("<span></span>");
+            var ptext=$("<p></p>");
+            dataspan.html(vals[vals.length-3]);
+            timespan.html(vals[vals.length-2]);
+            ptext.html(vals[vals.length-1]);
+            dataspan.appendTo(div);
+            timespan.appendTo(div);
+            ptext.appendTo(div);
+            div.appendTo("#showtext");
+            div.addClass("divclass");
+
+        });
+
+
+    })
+</script>
+</body>
+</html>

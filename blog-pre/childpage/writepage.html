@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表博客</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <style>
+        .heander{
+            font-size: 12px;
+            color:  #484746;
+            border-bottom: 1px solid silver;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .content{
+            width: 821px;
+            height: auto;
+            margin: 20px 10px 0 10px;
+        }
+        .content_title{
+            font-size: 18px;
+            width: 802px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #f4f4f4;
+            color: #4d4d4d;
+            padding-left: 20px;
+        }
+        .content_title>input{
+            outline: none;
+            border-style: none;
+            background-color: #f4f4f4;
+            width: 780px;
+            height: 36px;
+        }
+        .text>textarea{
+            width: 800px;
+            min-height: 600px;
+            outline: none;
+            font-size: 14px;
+            resize:none;
+            padding: 10px;
+            border: 1px solid silver;
+        }
+        .fabu{
+            margin: 29px;
+            font-size: 14px;
+        }
+        .fabu>div>select{
+            display: inline-block;
+            padding: 5px 10px;
+            width: 100px;
+            line-height: 30px;
+            outline: none;
+            background-color: #f4f4f4;
+        }
+        #submit{
+            width: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #c92027;
+            color: #c92027;
+            background-color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div id="writepage">
+    <div class="heander">
+        <i class="iconfont">&#xf014a;</i>
+        <span>您现在所在的位置是：首页>发表博客</span>
+    </div>
+    <div class="content">
+        <div class="content_title"><input type="text" class="title" placeholder="请输入文章标题"></div>
+        <div class="text">
+            <textarea name="" id="txt"></textarea>
+        </div>
+    </div>
+</div>
+<div class="fabu">
+    <div>
+        文章类型：
+        <select name="" id="">
+            <option value="原创">原创</option>
+            <option value="转载">转载</option>
+        </select>
+        <span style="color:#c92027;margin-left: 8px;">*</span>
+    </div>
+    <button id="submit">发布博客</button>
+</div>
+<script src="../js/jquery-3.0.0.js"></script>
+<script>
+    $(function(){
+        //通过cookie 获取当前用户昵称 获取对应的id
+        $("#submit").click(function (){
+            var cook=document.cookie;
+            if(cook=="")
+            {
+                window.open("../enter.html");
+                return;
+            }
+            var title=$(".title").val();
+            var content=$("#txt").val();
+            var time=new Date().toLocaleDateString();
+            var id=JSON.parse(document.cookie)[0].id;
+            $.ajax({
+                method:"post",
+                data:{"id":id,"time":time,"title":title,"content":content},
+                url:"http://localhost/blog-pre/php/insertblog.php",
+                success:function (data){
+                    alert(data);
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

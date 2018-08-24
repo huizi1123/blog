@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <style>
+        li{
+            list-style: none;
+        }
+        .content>ul{
+            margin: 0;
+            padding: 0 20px 0 20px;
+        }
+        .content>ul>li{
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px dashed grey;
+            padding: 30px 0;
+            margin: 20px 0;
+        }
+        .left{
+            flex: 5;
+        }
+        .right{
+            flex: 1.9;
+            text-align: center;
+        }
+        .right>img{
+            max-width: 220px;
+        }
+        .left>a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #212121;
+            font-weight: bold;
+        }
+        .heander{
+            font-size: 12px;
+            color:  #484746;
+            border-bottom: 1px solid silver;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .left>div:nth-child(2){
+            font-size: 14px;
+            color: #484746;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+        .left>div:nth-child(2)>span{
+            margin: 0 5px;
+        }
+        .left>div:nth-child(3)>span:nth-child(1){
+            display: block;
+            height: 46px;
+            width: 582px;
+            font-size: 14px;
+            overflow: hidden;
+            /*white-space: pre-line;*/
+            text-overflow: ellipsis;
+        }
+        .left>div:nth-child(3)>span:nth-child(1)>span{
+            color: red;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="myblog">
+        <div class="heander">
+            <i class="iconfont">&#xf014a;</i>
+            <span>您现在所在的位置是：首页>我的博客</span>
+        </div>
+        <div class="content">
+            <ul class="content_ul">
+                <li>
+                    <div class="left">
+                        <a href="#">个人博客从简就繁</a>
+                        <div>
+                            <span>作者：XX</span>
+                            <span>2018-1-9</span>
+                            <span>分类：[<span style="color: #0f9c98;">原创</span>]</span>
+                            <span>浏览：(<span style="color: #0f9c98;">545</span>)</span>
+                            <span>评论：(<span style="color: #0f9c98;">55</span>)</span>
+                        </div>
+                        <div>
+                            <span>十一月中旬开始，排名突然下降了，网站“个人博客”关
+                                键词排名从第一页第二名滑落到100页以后了，个人博
+                                客这个关键词百度已经搜不到了，仅有google、搜狗...
+                                <span>全文</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="../image/myblog.jpg" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="left">
+                        <a href="#">个人博客从简就繁</a>
+                        <div>
+                            <span>作者：XX</span>
+                            <span>2018-1-9</span>
+                            <span>分类：[<span style="color: #0f9c98;">原创</span>]</span>
+                            <span>浏览：(<span style="color: #0f9c98;">545</span>)</span>
+                            <span>评论：(<span style="color: #0f9c98;">55</span>)</span>
+                        </div>
+                        <div>
+                            <span>十一月中旬开始，排名突然下降了，网站“个人博客”关
+                                键词排名从第一页第二名滑落到100页以后了，个人博
+                                客这个关键词百度已经搜不到了，仅有google、搜狗...
+                                <span>全文</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="../image/myblog1.jpg" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="left">
+                        <a href="#">个人博客从简就繁</a>
+                        <div>
+                            <span>作者：XX</span>
+                            <span>2018-1-9</span>
+                            <span>分类：[<span style="color: #0f9c98;">原创</span>]</span>
+                            <span>浏览：(<span style="color: #0f9c98;">545</span>)</span>
+                            <span>评论：(<span style="color: #0f9c98;">55</span>)</span>
+                        </div>
+                        <div>
+                            <span>十一月中旬开始，排名突然下降了，网站“个人博客”关
+                                键词排名从第一页第二名滑落到100页以后了，个人博
+                                客这个关键词百度已经搜不到了，仅有google、搜狗...
+                                <span>全文</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="../image/myblog2.jpg" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="../js/jquery-3.0.0.js"></script>
+    <script>
+        $(function(){
+            //先判断用户是否登录
+            var cook=document.cookie;
+            if(cook==""){
+               /* window.open("../enter.html");
+                return;*/
+            }
+            else{
+                //获取所有发表的文章
+                var id=JSON.parse(cook)[0].id;
+                $.ajax({
+                    method:"post",
+                    data:{
+                        "id":id
+                    },
+                    url:"http://localhost/blog-pre/php/selectUserBlog.php",
+                    success:function(data){
+                        var content=JSON.parse(data);
+                        for(var i=0;i<content.length;i++){
+                            var txt="<li> <div class='left'><a href='#'>" +content[i].title+
+                                    "</a></div> " +"<div>" +"<span>" +content[i].id+
+                                    "</span>"+"<span>"+cook[0].nickname+"</span>"+
+                                    "<span>"+content[i].time+"</span>"+
+                                    "</div>"+"<div><span>"+content[i].content+"</span></div>"+
+                                    "<div class='right'></div> </li>";
+                            $(".content_ul").append(txt);
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>
